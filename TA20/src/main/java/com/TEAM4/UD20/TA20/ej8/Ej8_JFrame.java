@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 //@author&revision Eloi Martorell Martin
 //03/05/2022
 
-public class Ej7_JFrame extends JFrame {
+public class Ej8_JFrame extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -29,7 +29,7 @@ public class Ej7_JFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ej7_JFrame frame = new Ej7_JFrame();
+					Ej8_JFrame frame = new Ej8_JFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +41,7 @@ public class Ej7_JFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ej7_JFrame() {
+	public Ej8_JFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
