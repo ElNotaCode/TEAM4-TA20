@@ -1,1 +1,3 @@
-# TEAM4-TA20
+# TEAM4
+
+Eloi Martorell, Marc Lopez y Borja Montseny
