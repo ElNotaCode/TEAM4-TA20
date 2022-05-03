@@ -1,4 +1,4 @@
-package com.TEAM4.UD20.TA20.ej7;
+package com.TEAM4.UD20.TA20.ej8;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
