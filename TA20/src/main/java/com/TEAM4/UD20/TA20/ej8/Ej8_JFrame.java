@@ -7,20 +7,22 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.InputMismatchException;
 import java.awt.event.ActionEvent;
 
 //@author Marc Lopez
 //@author&revision Eloi Martorell Martin
 //03/05/2022
 
-public class Ej7_JFrame extends JFrame {
+public class Ej8_JFrame extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField tf1;
+	private JTextField tf2;
 
 	/**
 	 * Launch the application.
@@ -29,7 +31,7 @@ public class Ej7_JFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Ej7_JFrame frame = new Ej7_JFrame();
+					Ej8_JFrame frame = new Ej8_JFrame();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,7 +43,7 @@ public class Ej7_JFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Ej7_JFrame() {
+	public Ej8_JFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -59,28 +61,19 @@ public class Ej7_JFrame extends JFrame {
 		contentPane.add(lblNewLabel_1);
 
 		//textFields
-		textField = new JTextField();
-		textField.setBounds(183, 25, 66, 16);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		tf1 = new JTextField();
+		tf1.setBounds(183, 25, 66, 16);
+		contentPane.add(tf1);
+		tf1.setColumns(10);
 
-		textField_1 = new JTextField();
-		textField_1.setEditable(false);
-		textField_1.setBounds(323, 25, 121, 16);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		tf2 = new JTextField();
+		tf2.setEditable(false);
+		tf2.setBounds(323, 25, 121, 16);
+		contentPane.add(tf2);
+		tf2.setColumns(10);
 
 		//refactor botoneuro a botonEuro @Eloi
 		final JButton botonEuro = new JButton("Euros a ptas");
-		botonEuro.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//refactor cantidadmoneda a cantidadMoneda @Eloi
-				double cantidadMoneda = Double.parseDouble(textField.getText());
-				double resultado = cantidadMoneda * 166.386;
-				textField_1.setText(String.valueOf(resultado));
-
-			}
-		});
 		botonEuro.setBounds(114, 63, 117, 29);
 		contentPane.add(botonEuro);
 
@@ -95,9 +88,24 @@ public class Ej7_JFrame extends JFrame {
 		botonCambiar.setBounds(258, 63, 117, 29);
 		contentPane.add(botonCambiar);
 		
+		//boton borrar
+		JButton botonBorrar = new JButton("Borrar");
+		botonBorrar.setBounds(258, 103, 117, 29);
+		contentPane.add(botonBorrar);
+		
+		//listener borrar
+		botonBorrar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				tf1.setText("");
+				tf2.setText("");
+			}
+		});
+		//listener cambiar
 		botonCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (botonEuro.isEnabled()) {
+				if (botonEuro.isVisible()) {
 					botonEuro.setVisible(false);
 				    botonPesetas.setVisible(true);
 				}else {
@@ -107,15 +115,36 @@ public class Ej7_JFrame extends JFrame {
 			}
 		});
 		
-		botonPesetas.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				//refactor cantidadmoneda a cantidadMoneda @Eloi
-				double cantidadMoneda = Double.parseDouble(textField.getText());
-				double resultado = (cantidadMoneda / 166.386) ;
-				textField_1.setText(String.valueOf(resultado));
-			}
-		});
+		try {
+			
+			//listner converiones
+			
+			botonEuro.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//refactor cantidadmoneda a cantidadMoneda @Eloi
+					double cantidadMoneda = Double.parseDouble(tf1.getText());
+					double resultado = cantidadMoneda * 166.386;
+					tf2.setText(String.valueOf(resultado));
+
+				}
+			});
+			
+			botonPesetas.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					//refactor cantidadmoneda a cantidadMoneda @Eloi
+					double cantidadMoneda = Double.parseDouble(tf1.getText());
+					double resultado = (cantidadMoneda / 166.386) ;
+					tf2.setText(String.valueOf(resultado));
+				}
+			});
+			
+		} catch (InputMismatchException e) {
+			// TODO: handle exception
+		    String message = "yeee";
+		        JOptionPane.showMessageDialog(new JFrame(), message, "Dialog", JOptionPane.ERROR_MESSAGE);
+		}
+		
+
 		
 	}
-
 }

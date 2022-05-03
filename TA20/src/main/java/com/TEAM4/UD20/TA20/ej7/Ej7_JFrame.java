@@ -97,7 +97,7 @@ public class Ej7_JFrame extends JFrame {
 		
 		botonCambiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (botonEuro.isEnabled()) {
+				if (botonEuro.isVisible()) {
 					botonEuro.setVisible(false);
 				    botonPesetas.setVisible(true);
 				}else {
