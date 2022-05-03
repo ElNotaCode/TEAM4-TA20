@@ -2,6 +2,6 @@
 
 Eloi Martorell, Marc Lopez y Borja Montseny
 
-ej1 - Borja
-ej2 - Marc 
-ej3 - Eloi
+ej1 - Borja \n
+ej2 - Marc \n
+ej3 - Eloi \n
