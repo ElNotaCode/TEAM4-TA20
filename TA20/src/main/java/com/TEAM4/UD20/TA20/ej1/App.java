@@ -1,4 +1,4 @@
-package com.TEAM4.UD20.TA20;
+package com.TEAM4.UD20.TA20.ej1;
 
 /**
  * Hello world!
